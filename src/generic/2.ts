@@ -5,7 +5,7 @@ type AllType = {
   weight: number;
 }
 
-function compare<T extends AllType>(top: T, bottom: T): AllType {
+function compare<T extends { name: string; color: string }, U extends { position: number; weight: number }>(top: T, bottom: U): AllType {
   return {
     name: top.name,
     color: top.color,
