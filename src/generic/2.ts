@@ -3,9 +3,12 @@ type AllType = {
   position: number;
   color: string;
   weight: number;
-}
+};
 
-function compare<T extends { name: string; color: string }, U extends { position: number; weight: number }>(top: T, bottom: U): AllType {
+type TopType = Pick<AllType, 'name' | 'color'>;
+type BottomType = Omit<AllType, 'name' | 'color'>;
+
+function compare<T extends TopType, U extends BottomType>(top: T, bottom: U): AllType {
   return {
     name: top.name,
     color: top.color,
